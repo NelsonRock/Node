@@ -1,8 +1,14 @@
 import {createServer} from 'http';
+import {sumTwo, mult } from '../modules/math/addition';
+console.log("Suma:" + sumTwo(6, 7));
+console.log("Mult:" + mult(6, 7));
+
 var url = require('url');
 let items = [];
 createServer((req, res)=>{
   console.log(items);
+  const path = url.parse(req.url).pathname; // pathname: '/1'
+  let i = '';
   switch(req.method){
     case 'POST':
       let item = '';
@@ -19,11 +25,40 @@ createServer((req, res)=>{
       break;
 
   case 'GET':
-    items.forEach((v, i)=>{
-      res.write(i + ')' + v + '\n');
-    });
-    res.end();
+    let body = items.map((v, i)=>{
+    return i + ')' + v+ '\n' ;
+  }).join('\n');
+    res.setHeader('Content-Type', Buffer.byteLength(body));
+    res.setHeader('Content-Type', 'text/plain; charset="utf8"');
+    res.end(body);
     break;
+
+  case 'PUT':
+    i = parseInt(path.slice(1), 10);
+    if(isNaN(i)){
+      res.statusCode = 400 //item is not valid, not a number
+      res.end('Invalid item id');
+    } else if(!items[i]){
+      res.statusCode = 404;
+      res.end('Item not found');
+    } else {
+      items.push(i); // add item from items array
+      res.end('OK\nAdded\n');
+    }
+
+
+  case 'DELETE':
+    i = parseInt(path.slice(1), 10); //converting to decimal number
+    if(isNaN(i)){
+      res.statusCode = 400 //item is not valid, not a number
+      res.end('Invalid item id');
+    } else if(!items[i]){
+      res.statusCode = 404;
+      res.end('Item not found');
+    } else {
+      items.splice(i, 1); // delete item from items array
+      res.end('OK\nDelete\n');
+    }
   }
 }).listen(3000, '127.0.0.1');
 console.log("Running in http://localhost:3000/");
