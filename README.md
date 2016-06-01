@@ -1,1 +1,1 @@
-Using babel and ES&
+Using babel and ES6, Node
