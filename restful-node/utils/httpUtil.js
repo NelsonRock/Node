@@ -30,7 +30,7 @@ export function show(res) {
   var html = '<html><head><title>Todo List</title></head><body>';
   html += '<h1>Todo List</h1>';
   html += '<ul>';
-  items.map(function(item){
+  var itemsView = items.map(function(item){
     return '<li>' + item + '</li>'
   }).join('');
   html += '</ul>';
@@ -38,6 +38,7 @@ export function show(res) {
   html += '<p><input type="text" name="item" /></p>';
   html += '<p><input type="submit" value="Add Item" /></p>';
   html += '</form></body></html>';
+  html += '<div>'+ itemsView + '</div>';
   res.setHeader('Content-Type', 'text/html');
   res.setHeader('Content-Length', Buffer.byteLength(html));
   res.end(html);
