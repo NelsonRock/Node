@@ -5,10 +5,6 @@ import _array from 'lodash/array';
 console.log("Suma:" + sumTwo(6, 7));
 console.log("Mult:" + mult(6, 7));
 
-var number = _array.indexOf([1, 2, 3, 4, 5, 6], 3);
-console.log("Encontrado:" + number);
-
-
 var url = require('url');
 let items = [];
 createServer((req, res)=>{
@@ -34,11 +30,10 @@ createServer((req, res)=>{
 
   case 'GET':
     i = parseInt(path.slice(1), 10);
-    console.log("Parsed:" + i);
-
-    if(i){
-      console.log("Item finded:" + items[i]);
-    }
+    //
+    // if(i){
+    //   console.log("Item finded:" + items[i]);
+    // }
     let body = items.map((v, i)=>{
     return i + ')' + v+ '\n' ;
   }).join('\n');
@@ -47,23 +42,23 @@ createServer((req, res)=>{
     res.end(body);
     break;
 
-  case 'PUT':
-    i = parseInt(path.slice(1), 10);
-    console.log("Parsed PUT:" + i);
-    let number = _array.indexOf(items, i);
-    console.log("Put method find item:" + items[number] );
-
-    if(isNaN(i)){
-      res.statusCode = 400 //item is not valid, not a number
-      res.end('Invalid item id');
-    } else if(!items[i]){
-      res.statusCode = 404;
-      res.end('Item not found');
-    } else {
-      items.push(i); // add item from items array
-      res.end('OK\nAdded\n');
-    }
-
+  // case 'PUT':
+  //   i = parseInt(path.slice(1), 10);
+  //   console.log("Parsed PUT:" + i);
+  //   let number = _array.indexOf(items, i);
+  //   console.log("Put method find item:" + items[number] );
+  //
+  //   if(isNaN(i)){
+  //     res.statusCode = 400 //item is not valid, not a number
+  //     res.end('Invalid item id');
+  //   } else if(!items[i]){
+  //     res.statusCode = 404;
+  //     res.end('Item not found');
+  //   } else {
+  //     items.push(i); // add item from items array
+  //     res.end('OK\nAdded\n');
+  //   }
+  //
 
   case 'DELETE':
     i = parseInt(path.slice(1), 10); //converting to decimal number
