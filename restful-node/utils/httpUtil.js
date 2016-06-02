@@ -26,7 +26,6 @@ export function notFound(res){
 
 export function show(res) {
   console.log("Items:"  + items.length);
-
   var html = '<html><head><title>Todo List</title></head><body>';
   html += '<h1>Todo List</h1>';
   html += '<ul>';
@@ -51,6 +50,7 @@ export function add(req, res){
   req.on('data', (chunk )=>{ body += chunk });
   req.on('end',()=>{
       let ob = qs.parse(body);
+      console.log("Body parsed:" + ob.item);
       items.push(ob.item);
       show(res);
   });

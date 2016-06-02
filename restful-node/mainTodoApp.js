@@ -1,14 +1,18 @@
 import { createServer } from 'http';
 import { notFound, show, badRequest, add, items } from './utils/httpUtil';
+import { showUpload, upload } from './modules/uploadModule/upload';
+
 createServer((req, res)=>{
   if('/' ==req.url){
     switch(req.method){
         case 'GET':
-          show(res);
+          // show(res);
+          showUpload(req, res);
         break;
 
         case 'POST':
-          add(req, res);
+          // add(req, res);
+          upload(req, res);
         break;
 
         default:
