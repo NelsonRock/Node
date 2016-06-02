@@ -1,10 +1,10 @@
 > Exploring restfull-services in node with Es6 import and export module
 ```
 npm install --save-dev babel-cli- babel-core-babel-preset-es2015 nodemon
+```
+> Config your package.json to:
 
-```
-```
-Config your package.json to:
+ ```
 "scripts": {
   "dev": "nodemon --exec babel-node src/index.js",
   "prestart": "babel src --out-dir dist",
@@ -13,3 +13,8 @@ Config your package.json to:
 ```
 
 > And if you want install curl for testing!
+> File mainTodoApp.js is for testing purpose and other stuff like testing querystring module, we used to make a TodoApp with node server.
+
+>Folder utils is used for function imported in mainTodoApp.js
+
+##Don't forget to change in yout package.json the entry file##
