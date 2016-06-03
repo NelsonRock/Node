@@ -24,22 +24,25 @@ export function upload(req, res){
     return badRequest(res);
   }
   let form = new formidable.IncomingForm();
-  form.on('field', (field, value)=>{
-    console.log("Field Object:" + field);
-    console.log("Value:" + value);
+  // form.on('field', (field, value)=>{
+  //   console.log("Field Object:" + field);
+  //   console.log("Value:" + value);
+  // });
+  //
+  // form.on('file', (name, file)=>{
+  //   console.log("Name:" + name);
+  //   console.log("File:" + file);
+  // });
+  // form.on('progress', function(bytesReceived, bytesExpected){
+  //   let percent = Math.floor(bytesReceived / bytesExpected * 100);
+  //   console.log(percent);
+  // });
+  // form.on('end',() => res.end('Upload complete!!!'))
+  form.parse(req, (err, fields, files)=>{
+    console.log(fields);
+    console.log(files);
+    res.end('Upload complete!')
   });
-
-  form.on('file', (name, file)=>{
-    console.log("Name:" + name);
-    console.log("File:" + file);
-  });
-  form.on('progress', function(bytesReceived, bytesExpected){
-    let percent = Math.floor(bytesReceived / bytesExpected * 100);
-    console.log(percent);
-  });
-  form.on('end',() => res.end('Upload complete!!!'))
-  form.parse(req);
-  console.log("Formidable form:" + form);
+  // console.log("Formidable form:" + form);
   // form.parse(req);
-
 }
