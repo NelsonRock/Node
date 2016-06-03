@@ -19,7 +19,8 @@ npm install --save-dev babel-cli- babel-core-babel-preset-es2015 nodemon
 
 ##Don't forget to change in yout package.json the entry file##
 
-> Folder uploadModule have upload.js file ofr testing formidable package fot testing upload file!
+> Folder uploadModule have upload.js file for testing formidable package and testing upload file!.
+You'll find lo comments in js file, up to you!
 ```
 npm install formidable
 ```
