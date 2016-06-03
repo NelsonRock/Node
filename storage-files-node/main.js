@@ -1,14 +1,10 @@
-// import { createServer } from 'http';
-// import path  from 'path';
-// import fs from 'fs';
-
 var path = require('path');
 var fs = require('fs');
 var args = process.argv.splice(2);
 var commnad = args.shift();
-console.log("command" + commnad)
+console.log("command used: " + commnad)
 var taskDescription = args.join(' ');
-var file = path.join(process.cwd(), '/.storage-files-node');
+var file = path.join(process.cwd(), 'store');
 
 /*
   Load tasks and parse to an array the tasks file
