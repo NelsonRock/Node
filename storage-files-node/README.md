@@ -1,4 +1,4 @@
-> Hi, you'll find in this small project storing data into a file and reading from it fom the commnad line in node.
+> Hi, you'll find in this small project storing data into a file and reading from it using the commnad line in node.
 
 >You use command line in node like
 
