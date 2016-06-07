@@ -1,6 +1,7 @@
 var path = require('path');
 var fs = require('fs');
 var args = process.argv.splice(2);
+console.log("arg:" + args);
 var commnad = args.shift();
 console.log("command used: " + commnad)
 var taskDescription = args.join(' ');
